@@ -52,9 +52,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_14_122116) do
   end
 
   create_table "tests", force: :cascade do |t|
-    t.string "category", null: false
+    t.integer "category", null: false
     t.integer "year", null: false
-    t.string "school_name", null: false
+    t.integer "school_name", null: false
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

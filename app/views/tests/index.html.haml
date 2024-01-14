@@ -1,1 +1,22 @@
-過去問の答え
+.container
+    .text-end
+        %h1.display-4.font-weight-bold PastPapers
+        %p.lead 過去問の答え
+        %hr
+
+    =link_to new_test_path do
+        .btn.btn-primary 新しいの追加
+
+
+
+    .row.row-cols-1.row-cols-md-4
+        - @tests.each do |test|
+            = link_to test_path(test) do
+                .col
+                    .card.mt-4.bg-secondary
+                        .card-body
+                            %h4.card-title= I18n.t("activerecord.attributes.test.school_name.#{test.school_name}")
+                            %p.card-text
+                            %strong= I18n.t("activerecord.attributes.test.category.#{test.category}")
+                            %br
+                            %strong= human_enum_name('test', 'year', test.year)
