@@ -1,4 +1,22 @@
-.container
+%section.hero
+  .container
+    .row.justify-content-center
+      .col-md-6.text-center
+        %h1.display-4.font-weight-bold AYZ ANSWERS
+        %p.lead あなたの採点をもっと楽に。採点用の画像をひとまとめにして表示するためのサイトです。
+        %hr.my-4
+        %a.btn.btn-light{href: "次のページのURL"} Explore Now
 
-    %h1.btn.btn-primary ようこそ！
-    %p これはトップページです。
+:css
+  .hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #003366; /* 濃い青色 */
+    color: white; /* 文字色を白に */
+  }
+
+  .font-weight-bold {
+    font-weight: bold; /* タイトルを太字に */
+  }
