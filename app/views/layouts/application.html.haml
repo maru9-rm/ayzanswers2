@@ -9,4 +9,17 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   %body
+    - unless current_page?(root_path)
+      %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+        .container-fluid
+          %a.font-weight-bold.navbar-brand{ href: "#" } AyzAnswers2
+          #navbarNav.collapse.navbar-collapse
+            %ul.navbar-nav
+              %li.nav-item
+                %a.nav-link{ href: tests_path } 過去問の答え
+              %li.nav-item
+                %a.nav-link{ href: texts_path } テキストの答え
+              %li.nav-item
+                %a.nav-link{ href: prints_path } その他の答え
+
     = yield
