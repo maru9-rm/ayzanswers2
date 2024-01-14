@@ -6,6 +6,18 @@
 
 
 
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #003366; /* 濃い青色 */
+    color: white; /* 文字色を白に */
+  }
+
+  .font-weight-bold {
+    font-weight: bold; /* タイトルを太字に */
+  }
 
 
 
