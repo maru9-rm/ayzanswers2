@@ -2,7 +2,10 @@
 
 
 
-
+a {
+    text-decoration: none;
+    color: black;
+}
 
 
 
@@ -28,6 +31,23 @@
 
 
 
+  .test-box {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  .category, .school-name, .year {
+    display: block;
+  }
+
+  .max-width {
+    max-width:100%; 
+    height:auto;
+  }
+  
+
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -44,3 +64,4 @@
  *= require_tree .
  *= require_self
  */
+
