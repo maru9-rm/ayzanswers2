@@ -5,8 +5,8 @@ ja:
         category:
           junior_high: "中学入試"
           high: "高校入試"
-          high_sg: "高校入試（専願）"
-          high_kk: "高校入試（後期）"
+          high_sg: "高校（専願）"
+          high_kk: "高校（後期）"
         school_name:
           sn: '西南'
           oh: '大濠'

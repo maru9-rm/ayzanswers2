@@ -1,9 +1,20 @@
 class TestsController < ApplicationController
 
-    def index
-        @tests = Test.all.order(:category, :school_name, :year)
-    end
+   # def index
+   #     @tests = Test.all.order(:category, :school_name, :year)
+   # end
       
+
+    def index
+        @selected_categories = params[:categories] || [] # 選択された学校区分のリスト
+        @selected_schools = params[:schools] || [] # 選択された学校名のリスト
+        
+        # 選択された学校区分と学校名に基づいてテストをフィルタリング
+        @tests = Test.where(category: @selected_categories, school_name: @selected_schools)
+
+        @alltests = Test.all.order(:category, :school_name, :year)
+
+    end
 
     def new
         @test = Test.build
