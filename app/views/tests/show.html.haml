@@ -1,59 +1,57 @@
 .container
-  .row.justify-content-center
+  .row.justify-content-center.mt-5
     .col-md-8
-      %h1 テスト詳細
 
-      %p
-        %strong 学校区分:
+      .h2
         = I18n.t("activerecord.attributes.test.category.#{@test.category}")
 
-      %p
-        %strong 年度:
-        = human_enum_name('test', 'year', @test.year)
+      .h1
+        #{I18n.t("activerecord.attributes.test.school_name.#{@test.school_name}")} #{human_enum_name('test', 'year', @test.year)} 
 
       %p
-        %strong 学校名:
-        = I18n.t("activerecord.attributes.test.school_name.#{@test.school_name}")
-        = @test.school_name
-
-      %p
-        %strong 備考:
+        備考:
         = @test.notes
 
       = link_to '戻る', tests_path, class: 'btn btn-secondary mt-3'
 
 
           
+
 - if @test.ja_images.attached?
   %hr
-  %p 国語
+  %p.text-center.fw-bold 国語
+  %hr
   - @test.ja_images.each do |image|
     = image_tag image, class: 'max-width'
 
 
 - if @test.ma_images.attached?
   %hr
-  %p 数学
+  %p.text-center.fw-bold 数学
+  %hr
   - @test.ma_images.each do |image|
     = image_tag image, class: 'max-width'
 
 
 - if @test.ss_images.attached?
   %hr
-  %p 社会
+  %p.text-center.fw-bold 社会
+  %hr
   - @test.ss_images.each do |image|
     = image_tag image, class: 'max-width'
 
 - if @test.sc_images.attached?
   %hr
-  %p 理科
+  %p.text-center.fw-bold 理科
+  %hr
   - @test.sc_images.each do |image|
     .col-md-4
       = image_tag image, class: 'max-width'
 
 - if @test.en_images.attached?
   %hr
-  %p 英語
+  %p.text-center.fw-bold 英語
+  %hr
   - @test.en_images.each do |image|
     = image_tag image, class: 'max-width'
   
