@@ -21,13 +21,14 @@
         = @test.notes
 
       = link_to '戻る', tests_path, class: 'btn btn-secondary mt-3'
+
+
           
 - if @test.ja_images.attached?
   %hr
   %p 国語
   - @test.ja_images.each do |image|
-    .col-md-4
-      = image_tag image, class: 'max-width'
+    = image_tag image, class: 'max-width'
 
 
 - if @test.ma_images.attached?
@@ -55,6 +56,6 @@
   %p 英語
   - @test.en_images.each do |image|
     = image_tag image, class: 'max-width'
-
+  
 
       

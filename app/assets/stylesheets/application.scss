@@ -46,7 +46,14 @@ a {
     max-width:100%; 
     height:auto;
   }
-  
+
+
+/* CSSでチェックボックスのスタイルを調整 */
+.checkbox {
+    transform: scale(1.4); /* チェックボックスを拡大 */
+    margin-right: 5px; /* チェックボックスとテキストの間隔を調整 */
+}
+
 
 
 /*
