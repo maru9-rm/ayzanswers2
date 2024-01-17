@@ -1,0 +1,24 @@
+.container
+  .row.justify-content-center.mt-5
+    .col-md-8
+
+      .h2
+        #{I18n.t("activerecord.attributes.print.grade.#{@print.grade}")} #{human_enum_name('print', 'subject', @print.subject)} 
+
+      .h1
+        =@print.title
+
+
+      %p
+        備考:
+        = @print.notes
+
+      = link_to '戻る', prints_path, class: 'btn btn-secondary mt-3'
+
+
+- if @print.print_images.attached?
+  %hr
+  %p.text-center.fw-bold 答案画像
+  %hr
+  - @print.print_images.each do |image|
+    = image_tag image, class: 'max-width'

@@ -1,0 +1,48 @@
+- if @print.errors.any?
+  #error_explanation
+    %h2
+      = pluralize(@print.errors.count, "error")
+      prohibited this print from being saved:
+    %ul
+      - @print.errors.full_messages.each do |message|
+        %li= message
+
+.container
+  .text-end
+    %h1.display-4.font-weight-bold NewOtherAnswers
+    %p.lead 新しい模範解答を登録する
+    %hr
+
+  .row.justify-content-center
+    .col-md-6.text-start
+
+      = form_with model: @print, local: true, html: { class: "needs-validation", novalidate: "" } do |form|
+        .form-group.my-3
+          = form.label :subject,"教科", class: 'form-label'
+          = form.select :subject, Print.subjects.keys.map { |k| [human_enum_name('print', 'subject', k), k] }, {}, { class: 'form-control' }
+
+        .form-group.my-3
+          = form.label :grade,"学年", class: 'form-label'
+          = form.select :grade, Print.grades.keys.map { |k| [human_enum_name('print', 'grade', k), k] }, {}, { class: 'form-control' }
+
+        .form-group.my-3
+          = form.label :title,"プリント名など", class: 'form-label'
+          = form.text_area :title, class: 'form-control'
+
+        .form-group.my-3
+          = form.label :notes,"備考", class: 'form-label'
+          = form.text_area :notes, class: 'form-control'
+
+          
+        
+      
+        .form-group.my-3
+          = form.label :print_images,"画像", class: 'form-label'
+          = form.file_field :print_images, multiple: true, name: 'print[print_images][]', class: 'form-control'    
+          
+
+        = form.submit "登録", class: 'btn btn-primary mt-3 form-control mt-5 mb-5'
+
+
+
+        

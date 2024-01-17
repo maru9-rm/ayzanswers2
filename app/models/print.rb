@@ -1,5 +1,9 @@
 class Print < ApplicationRecord
 
+    validates :grade, presence: true
+    validates :subject, presence: true
+    validates :title, presence: true
+
     has_many_attached :print_images
 
     enum subject: {
