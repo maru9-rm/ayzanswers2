@@ -3,3 +3,47 @@
         %h1.display-4.font-weight-bold Ohters
         %p.lead プリントなど、その他の答え
         %hr
+
+
+
+    =link_to new_print_path do
+        .btn.btn-danger.my-1.p-3 　新しい模範解答を追加　
+    
+    %hr
+    .text-center
+        %p.lead.fw-bold 検索
+    %hr
+
+    = form_tag prints_path, method: :get do
+        .form-group
+            = label_tag :subject, "科目"
+            = select_tag :subject, options_for_select([["国語", 0], ["数学or算数", 1], ["歴史", 2], ["地理", 3], ["公民or社会", 4], ["理科", 5], ["英語", 6], ["その他", 7]]), prompt: "すべて", class: "form-control"
+        .form-group
+            = label_tag :grade, "学年"
+            = select_tag :grade, options_for_select([["中３", 0], ["中２", 1], ["中１", 2], ["中学生共通", 3], ["小６", 4], ["小５", 5], ["小４", 6], ["小学生共通", 7], ["リトルプレ", 8]]), prompt: "すべて", class: "form-control"
+        = submit_tag "　　検索　　", class: "btn btn-primary mt-3"
+      
+
+
+    %hr
+    .row.row-cols-1.row-cols-md-4.mb-5
+        - @prints.each do |print|
+            - card_color_class = "bg-secondary" # デフォルトの背景色を設定
+
+            - if print.subject == "ja"
+                - card_color_class = "bg-primary"
+            - elsif print.subject == "ma"
+                - card_color_class = "bg-success"
+            - elsif print.subject == "hi"
+                - card_color_class = "bg-warning"
+            - elsif print.subject == "ge"
+                - card_color_class = "bg-danger"
+            
+            = link_to print_path(print) do
+                .col
+                    .card.mt-4{class: card_color_class}
+                        .card-body
+                            %h4.card-title= print.title
+                            %p.card-text
+                            %strong= I18n.t("activerecord.attributes.print.grade.#{print.grade}")
+                            %strong= I18n.t("activerecord.attributes.print.subject.#{print.subject}")
