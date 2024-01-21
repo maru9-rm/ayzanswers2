@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   resources :tests
 
-  resources :textbooks
+  resources :textbooks do
+    resources :pageimages, only: [:new, :create, :destroy]
+  end
+
 
   resources 'prints'
 

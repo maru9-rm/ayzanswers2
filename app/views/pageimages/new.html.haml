@@ -1,0 +1,12 @@
+.container
+  %h1 新しいページ画像を作成
+  = form_with(model: [@textbook, @pageimage], local: true, html: { multipart: true }) do |form|
+    .form-group
+      = form.label :title, "タイトル"
+      = form.text_field :title, class: "form-control"
+    
+    .form-group
+      = form.label :image, "画像"
+      = form.file_field :image, class: "form-control"
+    
+    = form.submit "作成", class: "btn btn-primary"
