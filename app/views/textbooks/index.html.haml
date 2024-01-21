@@ -1,8 +1,8 @@
-.container
+.container.pb-5
     .text-end
-        %h1.display-4.font-weight-bold Textbooks
+        %h1.display-4.font-weight-bold.mt-4 Textbooks
         %p.lead テキストの答え
-        %hr
+        %hr.mb-5
 
 
 
@@ -19,18 +19,25 @@
         %p.lead.fw-bold 検索
     %hr
 
+    
     = form_tag textbooks_path, method: :get do
         .form-group
-            = label_tag :grade, "学年"
+            = label_tag :grade, "◾️学年", class: "fw-bold mb-2"
             = select_tag :grade, options_for_select([["中３", 0], ["中２", 1], ["中１", 2], ["中学生共通", 3], ["小６", 4], ["小５", 5], ["小４", 6], ["小学生共通", 7], ["リトルプレ", 8]]), prompt: "すべて", class: "form-control"
         .form-group.mt-3
-            = label_tag :subject, "教科"
+            = label_tag :subject, "◾️教科", class: "fw-bold mb-2"
             = select_tag :subject, options_for_select([["国語", 0], ["数学or算数", 1], ["歴史", 2], ["地理", 3], ["公民or社会", 4], ["理科", 5], ["英語", 6], ["その他", 7]]), prompt: "すべて", class: "form-control"
+        .form-group.mt-3.mb-3
+            = label_tag :texttitle, "◾️テキスト", class: "fw-bold mb-2"
+            = select_tag :texttitle, options_for_select([["実力練成", 1], ["Keyワーク", 2], ["必修テキスト", 3], ["教科書マスター", 4], ["新ワーク", 5], ["予習シリーズ系", 6], ["その他", 7]]), prompt: "すべて", class: "form-control"
+
         
-        = submit_tag "　　検索　　", class: "btn btn-primary mt-4"
-      
+        = submit_tag "　　検索　　", class: "btn btn-primary mt-4 button-class"
 
 
+    %hr.mt-5
+    .text-center
+        %p.lead.fw-bold 検索結果
     %hr
     .row.row-cols-1.row-cols-md-4.mb-5
         - @textbooks.each do |textbook|
@@ -53,3 +60,4 @@
                             %p.card-text
                             %strong= I18n.t("activerecord.attributes.textbook.grade.#{textbook.grade}")
                             %strong= I18n.t("activerecord.attributes.textbook.subject.#{textbook.subject}")
+

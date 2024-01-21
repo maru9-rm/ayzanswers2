@@ -9,7 +9,7 @@
 
 .container
   .text-end
-    %h1.display-4.font-weight-bold NewPastPaperAnswer
+    %h1.display-4.font-weight-bold.mt-4 NewPastPaperAnswer
     %p.lead 新しい過去問の答えを登録する
     %hr
 
@@ -18,23 +18,23 @@
 
       = form_with model: @test, local: true, html: { class: "needs-validation", novalidate: "" } do |form|
         .form-group.my-3
-          = form.label :category,"学校区分", class: 'form-label'
+          = form.label :category,"◾️学校区分", class: 'form-label'
           = form.select :category, Test.categories.keys.map { |k| [human_enum_name('test', 'category', k), k] }, {}, { class: 'form-control' }
 
         .form-group.my-3
-          = form.label :school_name,"学校名", class: 'form-label'
+          = form.label :school_name,"◾️学校名", class: 'form-label'
           = form.select :school_name, Test.school_names.keys.map { |k| [human_enum_name('test', 'school_name', k), k] }, {}, { class: 'form-control' }
 
         .form-group.my-3
-          = form.label :year,"年度", class: 'form-label'
+          = form.label :year,"◾️年度", class: 'form-label'
           = form.select :year, Test.years.keys.map { |k| [human_enum_name('test', 'year', k), k] }, {}, { class: 'form-control' }
 
         .form-group.my-3
-          = form.label :notes,"備考・その他の学校の場合は学校名", class: 'form-label'
+          = form.label :notes,"◾️備考・その他の学校の場合は学校名", class: 'form-label'
           = form.text_area :notes, class: 'form-control'
 
           
-        
+        %hr
       
         .form-group.my-3
           = form.label :ja_images,"国語", class: 'form-label'
@@ -54,8 +54,8 @@
     
           
 
-        = form.submit "登録", class: 'btn btn-primary mt-3 form-control mt-5 mb-5'
+        = form.submit "登録", class: 'btn btn-primary mt-3 form-control button-class mt-5 mb-5'
 
 
 
-  = link_to "戻る", tests_path, class: "btn btn-secondary"
+      = link_to "戻る", tests_path, class: "btn btn-secondary button-class my-5"

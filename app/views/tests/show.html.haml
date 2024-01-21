@@ -1,18 +1,14 @@
 .container
-  .row.justify-content-center.mt-5
-    .col-md-8
+  .text-end
+    .h2.mt-5.fw-bold
+      = I18n.t("activerecord.attributes.test.category.#{@test.category}")
 
-      .h2
-        = I18n.t("activerecord.attributes.test.category.#{@test.category}")
+    .h1.fw-bold
+      #{I18n.t("activerecord.attributes.test.school_name.#{@test.school_name}")} #{human_enum_name('test', 'year', @test.year)} 
 
-      .h1
-        #{I18n.t("activerecord.attributes.test.school_name.#{@test.school_name}")} #{human_enum_name('test', 'year', @test.year)} 
+    %p
+      = @test.notes
 
-      %p
-        備考:
-        = @test.notes
-
-      = link_to '戻る', tests_path, class: 'btn btn-secondary mt-3'
 
 
           
@@ -56,4 +52,5 @@
     = image_tag image, class: 'max-width'
   
 
-      
+.container 
+  = link_to "戻る", tests_path, class: "btn btn-secondary button-class my-5"

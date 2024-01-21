@@ -1,6 +1,6 @@
 require "test_helper"
 
-class PageimageTest < ActiveSupport::TestCase
+class PageimagesTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

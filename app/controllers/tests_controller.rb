@@ -5,15 +5,11 @@ class TestsController < ApplicationController
    # end
       
 
+
     def index
-        @selected_categories = params[:categories] || [] # 選択された学校区分のリスト
-        @selected_schools = params[:schools] || [] # 選択された学校名のリスト
-        
-        # 選択された学校区分と学校名に基づいてテストをフィルタリング
-        @tests = Test.where(category: @selected_categories, school_name: @selected_schools)
-
-        @alltests = Test.all.order(:category, :school_name, :year)
-
+        @tests = Test.all.order(:category, :school_name, :year)
+        @tests = @tests.where(category: params[:category]) if params[:category].present?
+        @tests = @tests.where(school_name: params[:school_name]) if params[:school_name].present?
     end
 
     def new
@@ -25,6 +21,7 @@ class TestsController < ApplicationController
         if @test.save
           redirect_to @test, notice: 'テストが正常に作成されました。'
         else
+          flash[:error] = 'ページ画像の登録中にエラーが発生しました。'
           render :new
         end
     end

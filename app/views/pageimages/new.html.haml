@@ -1,12 +1,22 @@
 .container
-  %h1 新しいページ画像を作成
-  = form_with(model: [@textbook, @pageimage], local: true, html: { multipart: true }) do |form|
-    .form-group
-      = form.label :title, "タイトル"
-      = form.text_field :title, class: "form-control"
-    
-    .form-group
-      = form.label :image, "画像"
-      = form.file_field :image, class: "form-control"
-    
-    = form.submit "作成", class: "btn btn-primary"
+  .text-end
+    %h1.display-4.font-weight-bold.mt-4 NewTextbookAnswer
+    %p.lead 新しい答えを登録する
+    %hr
+
+  .row.justify-content-center
+    .col-md-6.text-start
+
+      = form_with(model: [@textbook, @pageimage], local: true, html: { multipart: true }) do |form|
+        .form-group.my-3
+          = form.label :title, "◾️タイトル"
+          = form.text_field :title, class: "form-control"
+        
+        .form-group.my-3.mb-3
+          = form.label :image, "◾️画像"
+          = form.file_field :image, class: "form-control"
+        
+        = form.submit "作成", class: "btn btn-primary button-class my-3"
+
+
+      = link_to "戻る", textbooks_path, class: "btn btn-secondary button-class my-5"

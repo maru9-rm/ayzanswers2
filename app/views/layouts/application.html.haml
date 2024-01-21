@@ -9,6 +9,14 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   %body
+    - if flash[:success].present?
+      .alert.alert-success
+        = flash[:success]
+
+    - if flash[:error].present?
+      .alert.alert-danger
+        = flash[:error]
+
     - unless current_page?(root_path)
       %nav.navbar.navbar-expand-lg.navbar-light.bg-light
         .container-fluid

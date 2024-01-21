@@ -25,7 +25,7 @@ class Print < ApplicationRecord
         e6: 4,
         e5: 5,
         e4: 6,
-        er: 7,
+        el: 7,
         pre: 8
     }
 

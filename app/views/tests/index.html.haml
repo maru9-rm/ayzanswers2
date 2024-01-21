@@ -1,6 +1,6 @@
-.container
+.container.pb-5
     .text-end
-        %h1.display-4.font-weight-bold PastPapers
+        %h1.display-4.font-weight-bold.mt-4 PastPapers
         %p.lead 過去問の答え
         %hr.mb-5
 
@@ -15,53 +15,25 @@
     %hr
 
     = form_tag tests_path, method: :get do
-        .row.row-cols-2.row-cols-md-4.mb-4
-            - Test.categories.keys.each do |category|
-                .div
-                    = check_box_tag 'categories[]', category, @selected_categories.include?(category), class:'checkbox'
-                    = label_tag "category_#{category}", human_enum_name('test', 'category', category)
+        .form-group
+            = label_tag :category, "◾️区分", class: "fw-bold mb-2"
+            = select_tag :category, options_for_select([["中学入試", 0], ["高校入試", 1], ["高校(専願)", 2], ["高校(後期)", 3]]), prompt: "すべて", class: "form-control"
+        .form-group.mt-3.mb-3
+            = label_tag :school_name, "◾️教科", class: "fw-bold mb-2"
+            = select_tag :school_name, options_for_select([["西南", 0], ["大濠", 1], ["東福岡", 2], ["筑女", 3], ["早稲田佐賀", 4], ["ラ・サール", 5], ["久留米附設", 6], ["青雲", 7], ["弘学館", 8], ["若葉", 9], ["舞鶴", 10], ["中村女子", 11], ["上智", 12], ["附属", 13], ["公立",14 ], ["その他",15 ]]), prompt: "すべて", class: "form-control"
+                
+        = submit_tag "　　検索　　", class: "btn btn-primary mt-4 button-class"
 
-        .row.row-cols-2.row-cols-md-4
-            - Test.school_names.keys.each do |school_name|
-                .div
-                    = check_box_tag 'schools[]', school_name, @selected_schools.include?(school_name), class:'checkbox'
-                    = label_tag "school_#{school_name}", human_enum_name('test', 'school_name', school_name)
-        
-        .mt-5
-            = submit_tag '　検索　', class: 'btn btn-primary'
+
+
+
+
     %hr.mt-5
     .text-center
         %p.lead.fw-bold 検索結果
     %hr
     .row.row-cols-1.row-cols-md-4
         - @tests.each do |test|
-            - card_color_class = "bg-secondary" # デフォルトの背景色を設定
-
-            - if test.category == "junior_high"
-                - card_color_class = "bg-primary"
-            - elsif test.category == "high"
-                - card_color_class = "bg-success"
-            - elsif test.category == "high_sg"
-                - card_color_class = "bg-warning"
-            - elsif test.category == "high_kk"
-                - card_color_class = "bg-danger"
-            
-            = link_to test_path(test) do
-                .col
-                    .card.mt-4{class: card_color_class}
-                        .card-body
-                            %h4.card-title= I18n.t("activerecord.attributes.test.school_name.#{test.school_name}")
-                            %p.card-text
-                            %strong= I18n.t("activerecord.attributes.test.category.#{test.category}")
-                            %br
-                            %strong= human_enum_name('test', 'year', test.year)
-
-    %hr.mt-5
-    .text-center
-        %p.lead.fw-bold すべての模範解答
-    %hr
-    .row.row-cols-1.row-cols-md-4.mb-5
-        - @alltests.each do |test|
             - card_color_class = "bg-secondary" # デフォルトの背景色を設定
 
             - if test.category == "junior_high"

@@ -13,7 +13,8 @@ class PageimagesController < ApplicationController
       if @pageimage.save
         redirect_to @textbook, notice: 'ページ画像が正常に登録されました。'
       else
-        # エラー処理を追加
+        flash[:error] = 'ページ画像の登録中にエラーが発生しました。'
+        render :new
       end
     end
   
@@ -33,3 +34,5 @@ class PageimagesController < ApplicationController
       params.require(:pageimage).permit(:title, :image)
     end
   end
+
+  

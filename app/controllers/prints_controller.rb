@@ -17,6 +17,7 @@ class PrintsController < ApplicationController
         if @print.save
           redirect_to @print, notice: 'テストが正常に作成されました。'
         else
+          flash[:error] = 'ページ画像の登録中にエラーが発生しました。'
           render :new
         end
     end
