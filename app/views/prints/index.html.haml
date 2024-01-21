@@ -1,8 +1,8 @@
-.container
+.container.pb-5
     .text-end
-        %h1.display-4.font-weight-bold Ohters
+        %h1.display-4.font-weight-bold.mt-4 Ohters
         %p.lead プリントなど、その他の答え
-        %hr
+        %hr.mb-5
 
 
 
@@ -16,17 +16,20 @@
 
     = form_tag prints_path, method: :get do
         .form-group
-            = label_tag :grade, "学年"
+            = label_tag :grade, "◾️学年", class: "fw-bold mb-2"
             = select_tag :grade, options_for_select([["中３", 0], ["中２", 1], ["中１", 2], ["中学生共通", 3], ["小６", 4], ["小５", 5], ["小４", 6], ["小学生共通", 7], ["リトルプレ", 8]]), prompt: "すべて", class: "form-control"
-        .form-group.mt-3
-            = label_tag :subject, "教科"
+        .form-group.mt-3.mb-3
+            = label_tag :subject, "◾️教科", class: "fw-bold mb-2"
             = select_tag :subject, options_for_select([["国語", 0], ["数学or算数", 1], ["歴史", 2], ["地理", 3], ["公民or社会", 4], ["理科", 5], ["英語", 6], ["その他", 7]]), prompt: "すべて", class: "form-control"
         
-        = submit_tag "　　検索　　", class: "btn btn-primary mt-4"
+        = submit_tag "　　検索　　", class: "btn btn-primary mt-4 button-class"
       
 
-
+    %hr.mt-5
+    .text-center
+        %p.lead.fw-bold 検索結果
     %hr
+
     .row.row-cols-1.row-cols-md-4.mb-5
         - @prints.each do |print|
             - card_color_class = "bg-secondary" # デフォルトの背景色を設定

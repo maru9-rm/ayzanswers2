@@ -1,9 +1,12 @@
 class TextbooksController < ApplicationController
 
     def index
-        @textbooks = Textbook.all
+      @textbooks = Textbook.all.order(:grade, :subject, :texttitle)
+      @textbooks = @textbooks.where(grade: params[:grade]) if params[:grade].present?
+      @textbooks = @textbooks.where(subject: params[:subject]) if params[:subject].present?
+      @textbooks = @textbooks.where(texttitle: params[:texttitle]) if params[:texttitle].present?
+      
     end
-
 
     def show
         @textbook = Textbook.find(params[:id])
@@ -18,6 +21,7 @@ class TextbooksController < ApplicationController
         if @textbook.save
           redirect_to @textbook, notice: 'テキストが正常に作成されました。'
         else
+          flash[:error] = 'ページ画像の登録中にエラーが発生しました。'
           render :new
         end
      end

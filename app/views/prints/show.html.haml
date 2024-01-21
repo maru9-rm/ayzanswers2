@@ -1,19 +1,15 @@
 .container
-  .row.justify-content-center.mt-5
-    .col-md-8
+  .text-end.mt-5
 
-      .h2
-        #{I18n.t("activerecord.attributes.print.grade.#{@print.grade}")} #{human_enum_name('print', 'subject', @print.subject)} 
+    .h2.fw-bold
+      #{I18n.t("activerecord.attributes.print.grade.#{@print.grade}")} #{human_enum_name('print', 'subject', @print.subject)} 
 
-      .h1
-        =@print.title
+    .h1.fw-bold
+      =@print.title
 
 
-      %p
-        備考:
-        = @print.notes
+    %p= @print.notes
 
-      = link_to '戻る', prints_path, class: 'btn btn-secondary mt-3'
 
 
 - if @print.print_images.attached?
@@ -22,3 +18,8 @@
   %hr
   - @print.print_images.each do |image|
     = image_tag image, class: 'max-width'
+
+
+
+.container
+  = link_to "戻る", prints_path, class: "btn btn-secondary button-class my-5"
