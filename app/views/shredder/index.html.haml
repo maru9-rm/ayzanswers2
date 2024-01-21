@@ -1,0 +1,49 @@
+
+.container
+  %h1.mt-5 過去問一覧
+  %table.table.table-hover
+    %thead
+      %tr
+        %th タイトル
+        %th 削除
+    %tbody
+      - @tests.each do |test|
+        %tr
+          %td
+            #{I18n.t("activerecord.attributes.test.category.#{test.category}")} #{I18n.t("activerecord.attributes.test.school_name.#{test.school_name}")} #{human_enum_name('test', 'year', test.year)} 
+          %td
+            = form_with(model: test, method: :delete, local: false, data: { turbo_confirm: "本当に削除しますか？" }) do |form|
+              = form.submit "削除", class: "btn btn-danger"
+    
+
+  %h1.mt-5 テキスト一覧
+  %table.table.table-hover
+    %thead
+      %tr
+        %th タイトル
+        %th 削除
+    %tbody
+      - @textbooks.each do |textbook|
+        %tr
+          %td
+            #{textbook.notes} #{I18n.t("activerecord.attributes.textbook.grade.#{textbook.grade}")}   #{I18n.t("activerecord.attributes.textbook.subject.#{textbook.subject}")}
+          %td
+            = form_with(model: textbook, method: :delete, local: false, data: { turbo_confirm: "本当に削除しますか？" }) do |form|
+              = form.submit "削除", class: "btn btn-danger"
+
+
+
+  %h1.mt-5 その他答え一覧
+  %table.table.table-hover
+    %thead
+      %tr
+        %th タイトル
+        %th 削除
+    %tbody
+      - @prints.each do |print|
+        %tr
+          %td
+            #{I18n.t("activerecord.attributes.print.grade.#{print.grade}")} #{human_enum_name('print', 'subject', print.subject)} 
+          %td
+            = form_with(model: print, method: :delete, local: false, data: { turbo_confirm: "本当に削除しますか？" }) do |form|
+              = form.submit "削除", class: "btn btn-danger"    

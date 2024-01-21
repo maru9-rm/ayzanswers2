@@ -23,12 +23,21 @@
   %hr        
   %p.lead.fw-bold 模範解答
   %hr
+
+
 - @textbook.pageimages.each_with_index do |pageimage, index|
-  %h3.ms-3= pageimage.title
-  = image_tag pageimage.image, id: "pageimage_#{index + 1}", class: 'mb-3'
+  .d-flex.justify-content-between.container
+    %h3.ms-3= pageimage.title
+    
+    = form_with(model: [@textbook, pageimage], method: :delete, local: false, data: { turbo_confirm: "本当に削除しますか？" }) do |form|
+      = form.submit "削除", class: "btn btn-danger" 
+    
+
+  = image_tag pageimage.image, id: "pageimage_#{index + 1}", class: 'mb-3 w-100'
 
 .container
   .row.justify-content-center.mt-5
     = link_to '新しいページ画像を追加', new_textbook_pageimage_path(@textbook), class: 'btn btn-primary my-3'
+    
 
     = link_to "戻る", textbooks_path, class: "btn btn-secondary mb-5"

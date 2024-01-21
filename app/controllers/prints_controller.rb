@@ -27,6 +27,11 @@ class PrintsController < ApplicationController
         @print = Print.find(params[:id])
     end
 
+    def destroy
+      print = Print.find(params[:id])
+      print.destroy!
+      redirect_to shredder_index_path, notice: '削除されました。'
+    end
 
     private
   

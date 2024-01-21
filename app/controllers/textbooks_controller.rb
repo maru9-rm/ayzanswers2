@@ -16,20 +16,27 @@ class TextbooksController < ApplicationController
         @textbook = Textbook.build
     end
       
-     def create
-        @textbook = Textbook.build(textbook_params)
-        if @textbook.save
-          redirect_to @textbook, notice: 'テキストが正常に作成されました。'
-        else
-          flash[:error] = 'ページ画像の登録中にエラーが発生しました。'
-          render :new
-        end
-     end
-      
-      private
-      
-      def textbook_params
-        params.require(:textbook).permit(:subject, :grade, :texttitle, :notes)
+    def create
+      @textbook = Textbook.build(textbook_params)
+      if @textbook.save
+        redirect_to @textbook, notice: 'テキストが正常に作成されました。'
+      else
+        flash[:error] = 'ページ画像の登録中にエラーが発生しました。'
+        render :new
       end
+     end
+
+    def destroy
+      textbook = Textbook.find(params[:id])
+      textbook.destroy!
+      redirect_to shredder_index_path, notice: '削除されました。'
+    end
+
+      
+    private
+      
+    def textbook_params
+      params.require(:textbook).permit(:subject, :grade, :texttitle, :notes)
+    end
 
 end

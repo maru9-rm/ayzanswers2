@@ -4,4 +4,9 @@ class Pageimage < ApplicationRecord
 
   validates :title, presence: true
   validates :image, presence: true
+
+  def remove_image
+    image.purge if image.attached?
+  end
+  
 end

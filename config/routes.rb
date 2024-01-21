@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'shredder/index'
   root 'pages#home'
 
   resources :tests
@@ -7,6 +8,9 @@ Rails.application.routes.draw do
     resources :pageimages, only: [:new, :create, :destroy]
   end
 
+
+  
+  resources :shredder, only: [:index]
 
   resources 'prints'
 

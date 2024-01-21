@@ -32,6 +32,13 @@ class TestsController < ApplicationController
     end
 
 
+    def destroy
+      test = Test.find(params[:id])
+      test.destroy!
+      redirect_to shredder_index_path, notice: '削除されました。'
+    end
+
+
     private
   
     def test_params
