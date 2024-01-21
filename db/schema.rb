@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_14_122116) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_21_000924) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_14_122116) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "pageimages", force: :cascade do |t|
+    t.string "titles"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "prints", force: :cascade do |t|
     t.integer "subject", null: false
     t.integer "grade", null: false
@@ -60,13 +66,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_14_122116) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "texts", force: :cascade do |t|
+  create_table "textbooks", force: :cascade do |t|
     t.integer "subject", null: false
     t.integer "grade", null: false
-    t.integer "textbook", null: false
-    t.text "pagenumber"
+    t.integer "texttitle", null: false
     t.text "notes"
-    t.text "textname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

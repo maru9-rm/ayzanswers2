@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :tests
 
-  resources 'texts'
+  resources :textbooks
 
   resources 'prints'
 
