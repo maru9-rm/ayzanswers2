@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_21_000924) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_21_121245) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,9 +43,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_21_000924) do
   end
 
   create_table "pageimages", force: :cascade do |t|
-    t.string "titles"
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "textbook_id"
+    t.index ["textbook_id"], name: "index_pageimages_on_textbook_id"
   end
 
   create_table "prints", force: :cascade do |t|
@@ -77,4 +79,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_21_000924) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "pageimages", "textbooks"
 end

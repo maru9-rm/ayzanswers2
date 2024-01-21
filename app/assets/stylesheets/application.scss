@@ -25,7 +25,21 @@ a {
 
 
 
+  .navbar-item {
+    list-style: none;
+    line-height: 56px;
+    padding: 0;
+    margin: 0;
+    
+    a {
+      padding: 0;
+      margin: 0;
+      margin-right: 20px;
+      text-decoration: none;
+      color: darkblue;
+    }
 
+  }
 
 
 

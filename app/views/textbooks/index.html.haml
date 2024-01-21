@@ -10,4 +10,46 @@
         .btn.btn-danger.my-1.p-3 　新しい模範解答を追加　
 
 
+
+
+
     
+    %hr
+    .text-center
+        %p.lead.fw-bold 検索
+    %hr
+
+    = form_tag textbooks_path, method: :get do
+        .form-group
+            = label_tag :grade, "学年"
+            = select_tag :grade, options_for_select([["中３", 0], ["中２", 1], ["中１", 2], ["中学生共通", 3], ["小６", 4], ["小５", 5], ["小４", 6], ["小学生共通", 7], ["リトルプレ", 8]]), prompt: "すべて", class: "form-control"
+        .form-group.mt-3
+            = label_tag :subject, "教科"
+            = select_tag :subject, options_for_select([["国語", 0], ["数学or算数", 1], ["歴史", 2], ["地理", 3], ["公民or社会", 4], ["理科", 5], ["英語", 6], ["その他", 7]]), prompt: "すべて", class: "form-control"
+        
+        = submit_tag "　　検索　　", class: "btn btn-primary mt-4"
+      
+
+
+    %hr
+    .row.row-cols-1.row-cols-md-4.mb-5
+        - @textbooks.each do |textbook|
+            - card_color_class = "bg-secondary" # デフォルトの背景色を設定
+
+            - if textbook.subject == "ja"
+                - card_color_class = "bg-primary"
+            - elsif textbook.subject == "ma"
+                - card_color_class = "bg-success"
+            - elsif textbook.subject == "hi"
+                - card_color_class = "bg-warning"
+            - elsif textbook.subject == "ge"
+                - card_color_class = "bg-danger"
+            
+            = link_to textbook_path(textbook) do
+                .col
+                    .card.mt-4{class: card_color_class}
+                        .card-body
+                            %h4.card-title= I18n.t("activerecord.attributes.textbook.texttitle.#{textbook.texttitle}")
+                            %p.card-text
+                            %strong= I18n.t("activerecord.attributes.textbook.grade.#{textbook.grade}")
+                            %strong= I18n.t("activerecord.attributes.textbook.subject.#{textbook.subject}")

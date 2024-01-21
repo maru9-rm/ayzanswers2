@@ -12,16 +12,17 @@
     - unless current_page?(root_path)
       %nav.navbar.navbar-expand-lg.navbar-light.bg-light
         .container-fluid
-          %a.font-weight-bold.navbar-brand{ href: root_path } AyzAnswers2
-          #navbarNav.collapse.navbar-collapse
-            %ul.navbar-nav
-              %li.nav-item
-                %a.nav-link{ href: tests_path } 過去問の答え
-              %li.nav-item
-                %a.nav-link{ href: textbooks_path } テキストの答え
-              %li.nav-item
-                %a.nav-link{ href: prints_path } その他の答え
+          .navbar-header
+            %a.font-weight-bold.navbar-brand{ href: root_path } AyzAnswers2
+          %ul.navbar-item.d-flex.justify-content-between
+            %li
+              %a.nav-link{ href: tests_path } 過去問
+            %li
+              %a.nav-link{ href: textbooks_path } テキスト
+            %li
+              %a.nav-link{ href: prints_path } その他
 
+      
     = yield
 
     
