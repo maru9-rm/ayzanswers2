@@ -2,8 +2,14 @@
   .container
     .row.justify-content-center
       .col-md-6.text-center
-        %h1.display-4.font-weight-bold ayzANSWERSver.2
-        %p.lead あなたの採点をもっと楽に。採点用の画像をひとまとめにして表示するためのサイトです。
+        %h1.display-4.font-weight-bold 
+          AyzAnswers
+          %a.whitetext{ href: shredder_index_path }-
+          ver.2 -
+        %p.lead
+          あなたの採点をもっと楽に。
+          %br
+          採点用の画像をひとまとめにして管理するサイト
         %hr.my-4
         .d-flex.justify-content-center
           %a.mx-3.btn.btn-light{href: tests_path} 入試問題の答え

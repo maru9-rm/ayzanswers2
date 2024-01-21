@@ -3,8 +3,12 @@
 
 
 a {
-    text-decoration: none;
-    color: black;
+  color: inherit; /* デフォルトの色を継承 */
+  text-decoration: none; /* 下線を削除 */
+}
+
+a:hover {
+  color: inherit; /* ホバー時の色もデフォルトの色を継承 */
 }
 
 
@@ -69,6 +73,9 @@ a {
     margin-top: 100px;
   }
 
+  .whitetext {
+    color: white;
+  }
 
 
 

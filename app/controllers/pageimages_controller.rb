@@ -19,9 +19,9 @@ class PageimagesController < ApplicationController
     end
   
     def destroy
-      @pageimage = @textbook.pageimages.find(params[:id])
+      @pageimage = Pageimage.find(params[:id])
       @pageimage.destroy
-      redirect_to @textbook, notice: 'ページ画像が削除されました。'
+      redirect_to @pageimage.textbook, notice: 'ページ画像が削除されました。'
     end
   
     private
