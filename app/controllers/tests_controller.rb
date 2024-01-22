@@ -31,6 +31,19 @@ class TestsController < ApplicationController
         @test = Test.find(params[:id])
     end
 
+    def edit
+      @test = Test.find(params[:id])
+    end
+    
+    def update
+      @test = Test.find(params[:id])
+      if @test.update(test_params)
+        redirect_to @test, notice: '編集が完了しました。'
+      else
+        render :edit
+      end
+    end
+
 
     def destroy
       test = Test.find(params[:id])

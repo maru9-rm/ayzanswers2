@@ -26,6 +26,19 @@ class TextbooksController < ApplicationController
       end
      end
 
+     def edit
+      @textbook = Textbook.find(params[:id])
+    end
+    
+    def update
+      @textbook = Textbook.find(params[:id])
+      if @textbook.update(textbook_params)
+        redirect_to @textbook, notice: '編集が完了しました。'
+      else
+        render :edit
+      end
+    end
+
     def destroy
       textbook = Textbook.find(params[:id])
       textbook.destroy!

@@ -1,0 +1,38 @@
+
+.row.justify-content-center
+  .col-md-6.text-start
+    = form_with model: @test, local: true, html: { class: "needs-validation", novalidate: "" } do |form|
+      .form-group.my-3
+        = form.label :category,"◾️学校区分", class: 'form-label'
+        = form.select :category, Test.categories.keys.map { |k| [human_enum_name('test', 'category', k), k] }, {}, { class: 'form-control' }
+      .form-group.my-3
+        = form.label :school_name,"◾️学校名", class: 'form-label'
+        = form.select :school_name, Test.school_names.keys.map { |k| [human_enum_name('test', 'school_name', k), k] }, {}, { class: 'form-control' }
+      .form-group.my-3
+        = form.label :year,"◾️年度", class: 'form-label'
+        = form.select :year, Test.years.keys.map { |k| [human_enum_name('test', 'year', k), k] }, {}, { class: 'form-control' }
+      .form-group.my-3
+        = form.label :notes,"◾️備考・その他の学校の場合は学校名", class: 'form-label'
+        = form.text_area :notes, class: 'form-control'
+        
+      %hr
+    
+      .form-group.my-3
+        = form.label :ja_images,"国語", class: 'form-label'
+        = form.file_field :ja_images, multiple: true, name: 'test[ja_images][]', class: 'form-control'
+      .form-group.my-3
+        = form.label :ma_images,"数学", class: 'form-label'
+        = form.file_field :ma_images, multiple: true, name: 'test[ma_images][]', class: 'form-control'
+      .form-group.my-3
+        = form.label :ss_images,"社会", class: 'form-label'
+        = form.file_field :ss_images, multiple: true, name: 'test[ss_images][]', class: 'form-control'
+      .form-group.my-3
+        = form.label :sc_images,"理科", class: 'form-label'
+        = form.file_field :sc_images, multiple: true, name: 'test[sc_images][]', class: 'form-control'
+      .form-group.my-3
+        = form.label :en_images,"英語", class: 'form-label'
+        = form.file_field :en_images, multiple: true, name: 'test[en_images][]', class: 'form-control'
+  
+        
+      = form.submit "登録", class: 'btn btn-primary mt-3 form-control button-class mt-5 mb-5'
+    = link_to "戻る", tests_path, class: "btn btn-secondary button-class my-5"
