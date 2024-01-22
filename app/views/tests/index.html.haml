@@ -49,8 +49,13 @@
                 .col
                     .card.mt-4{class: card_color_class}
                         .card-body
-                            %h4.card-title= I18n.t("activerecord.attributes.test.school_name.#{test.school_name}")
+                            %h4.card-title
+                                - if test.school_name == 'other'
+                                    = test.notes
+                                - else
+                                    = I18n.t("activerecord.attributes.test.school_name.#{test.school_name}")
                             %p.card-text
                             %strong= I18n.t("activerecord.attributes.test.category.#{test.category}")
                             %br
                             %strong= human_enum_name('test', 'year', test.year)
+            
