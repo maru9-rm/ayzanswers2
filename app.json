@@ -1,0 +1,16 @@
+{
+    "name": "ayzanswers2",
+    "description": "This is ayzanswers2",
+    "keywords": [],
+    "website": "",
+    "repository": "https://github.com/maru9-rm/ayzanswers2",
+    "env": {},
+    "addons": [
+      "heroku-postgresql:hobby-dev"
+    ],
+    "buildpacks": [{
+      "url": "heroku/nodejs"
+    }, {
+      "url": "heroku/ruby"
+    }]
+  }
