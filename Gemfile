@@ -49,6 +49,8 @@ gem 'haml-rails'
 gem 'bootstrap', '~> 5.1.3'
 gem 'jquery-rails'
 gem 'popper_js'
+gem 'cloudinary'
+
 
 
 
