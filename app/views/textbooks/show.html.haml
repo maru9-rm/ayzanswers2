@@ -33,7 +33,9 @@
       = form.submit "削除", class: "btn btn-danger" 
     
 
-  =cl_image_tag(pageimage.image.blob.key), id: "pageimage_#{index + 1}", class: 'mb-3 w-100'
+  - if pageimage.image.attached?
+    = cl_image_tag(pageimage.image.key, id: "pageimage_#{index + 1}", class: 'mb-3 w-100')
+
   -#= image_tag pageimage.image, id: "pageimage_#{index + 1}", class: 'mb-3 w-100'
 
 .container
