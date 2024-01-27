@@ -17,7 +17,8 @@
   %p.text-center.fw-bold 答案画像
   %hr
   - @print.print_images.each do |image|
-    = image_tag image, class: 'max-width'
+    =cl_image_tag(image.blob.key), class: 'max-width'
+    -#= image_tag image, class: 'max-width'
 
 
 

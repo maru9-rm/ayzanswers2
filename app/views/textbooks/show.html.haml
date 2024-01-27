@@ -33,7 +33,8 @@
       = form.submit "削除", class: "btn btn-danger" 
     
 
-  = image_tag pageimage.image, id: "pageimage_#{index + 1}", class: 'mb-3 w-100'
+  =cl_image_tag(pageimage.image.blob.key), id: "pageimage_#{index + 1}", class: 'mb-3 w-100'
+  -#= image_tag pageimage.image, id: "pageimage_#{index + 1}", class: 'mb-3 w-100'
 
 .container
   .row.justify-content-center.mt-5
