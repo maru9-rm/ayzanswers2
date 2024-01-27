@@ -7,7 +7,7 @@ class Print < ApplicationRecord
     has_many_attached :print_images
 
     enum subject: {
-        ja: 0, 
+        ja: 0,
         ma: 1,
         hi: 2,
         ge: 3,
@@ -28,6 +28,5 @@ class Print < ApplicationRecord
         el: 7,
         pre: 8
     }
-
 
 end

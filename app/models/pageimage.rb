@@ -8,5 +8,5 @@ class Pageimage < ApplicationRecord
   def remove_image
     image.purge if image.attached?
   end
-  
+
 end

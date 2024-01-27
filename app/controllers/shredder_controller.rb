@@ -5,5 +5,4 @@ class ShredderController < ApplicationController
     @textbooks = Textbook.all
   end
 
-  
 end

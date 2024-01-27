@@ -9,17 +9,12 @@
     %p
       = @test.notes
 
-
-
-          
-
 - if @test.ja_images.attached?
   %hr
   %p.text-center.fw-bold 国語
   %hr
   - @test.ja_images.each do |image|
     = cl_image_tag(image.blob.key, class: 'max-width')
-    -#= image_tag image, class: 'max-width'
 
 
 - if @test.ma_images.attached?
@@ -28,7 +23,6 @@
   %hr
   - @test.ma_images.each do |image|
     = cl_image_tag(image.blob.key, class: 'max-width')
-    -#= image_tag image, class: 'max-width'
 
 
 - if @test.ss_images.attached?
@@ -37,7 +31,6 @@
   %hr
   - @test.ss_images.each do |image|
     = cl_image_tag(image.blob.key, class: 'max-width')
-    -#= image_tag image, class: 'max-width'
 
 - if @test.sc_images.attached?
   %hr
@@ -46,7 +39,6 @@
   - @test.sc_images.each do |image|
     .col-md-4
     = cl_image_tag(image.blob.key, class: 'max-width')
-      -#= image_tag image, class: 'max-width'
 
 - if @test.en_images.attached?
   %hr
@@ -54,7 +46,6 @@
   %hr
   - @test.en_images.each do |image|
     = cl_image_tag(image.blob.key, class: 'max-width')
-    -#= image_tag image, class: 'max-width'
   
 
 .container.m-5

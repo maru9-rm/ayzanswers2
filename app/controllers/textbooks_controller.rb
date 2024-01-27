@@ -5,7 +5,7 @@ class TextbooksController < ApplicationController
       @textbooks = @textbooks.where(grade: params[:grade]) if params[:grade].present?
       @textbooks = @textbooks.where(subject: params[:subject]) if params[:subject].present?
       @textbooks = @textbooks.where(texttitle: params[:texttitle]) if params[:texttitle].present?
-      
+
     end
 
     def show
@@ -15,7 +15,7 @@ class TextbooksController < ApplicationController
     def new
         @textbook = Textbook.build
     end
-      
+
     def create
       @textbook = Textbook.build(textbook_params)
       if @textbook.save
@@ -29,7 +29,7 @@ class TextbooksController < ApplicationController
      def edit
       @textbook = Textbook.find(params[:id])
     end
-    
+
     def update
       @textbook = Textbook.find(params[:id])
       if @textbook.update(textbook_params)
@@ -45,9 +45,8 @@ class TextbooksController < ApplicationController
       redirect_to shredder_index_path, notice: '削除されました。'
     end
 
-      
     private
-      
+
     def textbook_params
       params.require(:textbook).permit(:subject, :grade, :texttitle, :notes)
     end

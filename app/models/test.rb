@@ -1,7 +1,7 @@
 class Test < ApplicationRecord
     validates :category, presence: true
     validates :school_name, presence: true
-    
+
     has_many_attached :ja_images
     has_many_attached :ma_images
     has_many_attached :ss_images
@@ -9,7 +9,7 @@ class Test < ApplicationRecord
     has_many_attached :en_images
 
     enum category: {
-        junior_high: 0, 
+        junior_high: 0,
         high: 1,
         high_sg: 2,
         high_kk: 3
@@ -32,7 +32,7 @@ class Test < ApplicationRecord
         fz: 14,
         ps: 15,
         other: 16
-        
+
     }
     enum year: {
         H14_2002: 1,
@@ -61,6 +61,5 @@ class Test < ApplicationRecord
         R07_2025: 24,
         R08_2026: 25
     }
-
 
 end

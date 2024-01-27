@@ -3,8 +3,6 @@ class TestsController < ApplicationController
    # def index
    #     @tests = Test.all.order(:category, :school_name, :year)
    # end
-      
-
 
     def index
         @tests = Test.all.order(:category, :school_name, :year)
@@ -25,7 +23,6 @@ class TestsController < ApplicationController
           render :new
         end
     end
-    
 
     def show
         @test = Test.find(params[:id])
@@ -34,7 +31,7 @@ class TestsController < ApplicationController
     def edit
       @test = Test.find(params[:id])
     end
-    
+
     def update
       @test = Test.find(params[:id])
       if @test.update(test_params)
@@ -44,18 +41,15 @@ class TestsController < ApplicationController
       end
     end
 
-
     def destroy
       test = Test.find(params[:id])
       test.destroy!
       redirect_to shredder_index_path, notice: '削除されました。'
     end
 
-
     private
-  
+
     def test_params
       params.require(:test).permit(:category, :year, :school_name, :notes, ja_images: [],ma_images: [],ss_images: [],sc_images: [],en_images: [])
     end
   end
-  
