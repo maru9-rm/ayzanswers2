@@ -1,5 +1,5 @@
 class Textbook < ApplicationRecord
-    has_many :pageimages
+    has_many :pageimages, dependent: :destroy
     validates :grade, presence: true
     validates :texttitle, presence: true
 
