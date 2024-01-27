@@ -4,7 +4,7 @@ class Textbook < ApplicationRecord
     validates :texttitle, presence: true
 
     enum subject: {
-        ja: 0, 
+        ja: 0,
         ma: 1,
         hi: 2,
         ge: 3,
@@ -28,10 +28,10 @@ class Textbook < ApplicationRecord
 
     enum texttitle: {
         jitsuren: 1,
-        keywork: 2, 
-        hisshu: 3, 
-        master: 4, 
-        shinwork: 5, 
+        keywork: 2,
+        hisshu: 3,
+        master: 4,
+        shinwork: 5,
         yoshuseries: 6,
         othertext: 7
 
