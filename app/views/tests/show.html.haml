@@ -18,7 +18,8 @@
   %p.text-center.fw-bold 国語
   %hr
   - @test.ja_images.each do |image|
-    = image_tag image, class: 'max-width'
+    = cl_image_tag(image.blob.key, class: 'max-width')
+    -#= image_tag image, class: 'max-width'
 
 
 - if @test.ma_images.attached?
@@ -26,7 +27,7 @@
   %p.text-center.fw-bold 数学
   %hr
   - @test.ma_images.each do |image|
-    =cl_image_tag(image.blob.key), class: 'max-width'
+    = cl_image_tag(image.blob.key, class: 'max-width')
     -#= image_tag image, class: 'max-width'
 
 
@@ -35,7 +36,7 @@
   %p.text-center.fw-bold 社会
   %hr
   - @test.ss_images.each do |image|
-    =cl_image_tag(image.blob.key), class: 'max-width'
+    = cl_image_tag(image.blob.key, class: 'max-width')
     -#= image_tag image, class: 'max-width'
 
 - if @test.sc_images.attached?
@@ -44,7 +45,7 @@
   %hr
   - @test.sc_images.each do |image|
     .col-md-4
-      =cl_image_tag(image.blob.key), class: 'max-width'
+    = cl_image_tag(image.blob.key, class: 'max-width')
       -#= image_tag image, class: 'max-width'
 
 - if @test.en_images.attached?
@@ -52,7 +53,7 @@
   %p.text-center.fw-bold 英語
   %hr
   - @test.en_images.each do |image|
-    =cl_image_tag(image.blob.key), class: 'max-width'
+    = cl_image_tag(image.blob.key, class: 'max-width')
     -#= image_tag image, class: 'max-width'
   
 
