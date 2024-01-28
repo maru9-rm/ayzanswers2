@@ -34,16 +34,16 @@
     %hr
     .row.row-cols-1.row-cols-md-4
         - @tests.each do |test|
-            - card_color_class = "bg-secondary" # デフォルトの背景色を設定
+            - card_color_class = "bg-light" # デフォルトの背景色を設定
 
             - if test.category == "junior_high"
-                - card_color_class = "bg-primary"
+                - card_color_class = "color-sc"
             - elsif test.category == "high"
-                - card_color_class = "bg-success"
+                - card_color_class = "color-ma"
             - elsif test.category == "high_sg"
-                - card_color_class = "bg-warning"
+                - card_color_class = "color-ja"
             - elsif test.category == "high_kk"
-                - card_color_class = "bg-danger"
+                - card_color_class = "color-ss"
             
             = link_to test_path(test) do
                 .col

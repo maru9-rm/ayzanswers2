@@ -41,16 +41,22 @@
     %hr
     .row.row-cols-1.row-cols-md-4.mb-5
         - @textbooks.each do |textbook|
-            - card_color_class = "bg-secondary" # デフォルトの背景色を設定
+            - card_color_class = "bg-light" # デフォルトの背景色を設定
 
             - if textbook.subject == "ja"
-                - card_color_class = "bg-primary"
+                - card_color_class = "color-ja"
             - elsif textbook.subject == "ma"
-                - card_color_class = "bg-success"
+                - card_color_class = "color-ma"
             - elsif textbook.subject == "hi"
-                - card_color_class = "bg-warning"
+                - card_color_class = "color-hi"
             - elsif textbook.subject == "ge"
-                - card_color_class = "bg-danger"
+                - card_color_class = "color-ge"
+            - elsif textbook.subject == "ci"
+                - card_color_class = "color-ss"
+            - elsif textbook.subject == "sc"
+                - card_color_class = "color-sc"
+            - elsif textbook.subject == "en"
+                - card_color_class = "color-en"
             
             = link_to textbook_path(textbook) do
                 .col
