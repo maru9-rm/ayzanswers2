@@ -25,7 +25,7 @@
   %hr
 
 
-- @textbook.pageimages.each_with_index do |pageimage, index|
+- @pageimages.each_with_index do |pageimage, index|
   .d-flex.justify-content-between.container
     %h3.ms-3= pageimage.title
     
@@ -36,7 +36,7 @@
   - if pageimage.image.attached?
     = cl_image_tag(pageimage.image.key, id: "pageimage_#{index + 1}", class: 'mb-3 w-100')
 
-  -#= image_tag pageimage.image, id: "pageimage_#{index + 1}", class: 'mb-3 w-100'
+    -#= image_tag pageimage.image, id: "pageimage_#{index + 1}", class: 'mb-3 w-100'
 
 .container
   .row.justify-content-center.mt-5
