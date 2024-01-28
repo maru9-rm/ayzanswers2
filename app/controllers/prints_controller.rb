@@ -22,14 +22,10 @@ class PrintsController < ApplicationController
 
     def edit
       @print = Print.find(params[:id])
-      @current_image = @print.print_images
     end
 
     def update
       @print = Print.find(params[:id])
-
-      # フォームから送信されたパラメーターを取得
-      print_params = params.require(:print).permit(:subject, :grade, :title, :notes, print_images: [])
 
       # 画像ファイルがアップロードされた場合のみ画像を更新
       if print_params[print_images: []].present?

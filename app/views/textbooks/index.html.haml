@@ -56,7 +56,11 @@
                 .col
                     .card.mt-4{class: card_color_class}
                         .card-body
-                            %h4.card-title= I18n.t("activerecord.attributes.textbook.texttitle.#{textbook.texttitle}")
+                            %h4.card-title
+                                - if textbook.texttitle == 'othertext'
+                                    = textbook.notes
+                                - else
+                                    = I18n.t("activerecord.attributes.textbook.texttitle.#{textbook.texttitle}")
                             %p.card-text
                             %strong= I18n.t("activerecord.attributes.textbook.grade.#{textbook.grade}")
                             %strong= I18n.t("activerecord.attributes.textbook.subject.#{textbook.subject}")
