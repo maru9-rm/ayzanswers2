@@ -9,32 +9,59 @@
     %p
       = @test.notes
 
+
+
+  .text-center
+    %hr
+      .row.row-cols-auto
+        - if @test.ja_images.attached?
+          .btn.btn-light.m-2
+            %a(href="#pageimage_ja")
+              国語
+        - if @test.ma_images.attached?
+          .btn.btn-light.m-2
+            %a(href="#pageimage_ma")
+              数学
+        - if @test.ss_images.attached?
+          .btn.btn-light.m-2
+            %a(href="#pageimage_ss")
+              社会
+        - if @test.sc_images.attached?
+          .btn.btn-light.m-2
+            %a(href="#pageimage_sc")
+              理科
+        - if @test.en_images.attached?
+          .btn.btn-light.m-2
+            %a(href="#pageimage_en")
+              英語
+
 - if @test.ja_images.attached?
   %hr
-  %p.text-center.fw-bold 国語
+  %p.text-center.fw-bold#pageimage_ja 国語
   %hr
   - @test.ja_images.each do |image|
     = cl_image_tag(image.blob.key, class: 'max-width')
 
 
+
+
 - if @test.ma_images.attached?
   %hr
-  %p.text-center.fw-bold 数学
+  %p.text-center.fw-bold#pageimage_ma 数学
   %hr
   - @test.ma_images.each do |image|
     = cl_image_tag(image.blob.key, class: 'max-width')
 
-
 - if @test.ss_images.attached?
   %hr
-  %p.text-center.fw-bold 社会
+  %p.text-center.fw-bold#pageimage_ss 社会
   %hr
   - @test.ss_images.each do |image|
     = cl_image_tag(image.blob.key, class: 'max-width')
 
 - if @test.sc_images.attached?
   %hr
-  %p.text-center.fw-bold 理科
+  %p.text-center.fw-bold#pageimage_sc 理科
   %hr
   - @test.sc_images.each do |image|
     .col-md-4
@@ -42,7 +69,7 @@
 
 - if @test.en_images.attached?
   %hr
-  %p.text-center.fw-bold 英語
+  %p.text-center.fw-bold#pageimage_en 英語
   %hr
   - @test.en_images.each do |image|
     = cl_image_tag(image.blob.key, class: 'max-width')
