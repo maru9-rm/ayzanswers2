@@ -19,7 +19,7 @@
             = label_tag :category, "◾️区分", class: "fw-bold mb-2"
             = select_tag :category, options_for_select([["中学入試", 0], ["高校入試", 1], ["高校(専願)", 2], ["高校(後期)", 3]]), prompt: "すべて", class: "form-control"
         .form-group.mt-3.mb-3
-            = label_tag :school_name, "◾️教科", class: "fw-bold mb-2"
+            = label_tag :school_name, "◾️学校名", class: "fw-bold mb-2"
             = select_tag :school_name, options_for_select([["西南", 0], ["大濠", 1], ["東福岡", 2], ["筑女", 3], ["早稲田佐賀", 4], ["ラ・サール", 5], ["久留米附設", 6], ["青雲", 7], ["弘学館", 8], ["若葉", 9], ["舞鶴", 10], ["中村女子", 11], ["上智", 12], ["附属", 13], ["公立",14 ], ["その他",15 ]]), prompt: "すべて", class: "form-control"
                 
         = submit_tag "　　検索　　", class: "btn btn-primary mt-4 button-class"

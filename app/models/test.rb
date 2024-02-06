@@ -27,11 +27,10 @@ class Test < ApplicationRecord
         fw: 9,
         mz: 10,
         nj: 11,
-        fz: 12,
-        jc: 13,
-        fz: 14,
-        ps: 15,
-        other: 16
+        jc: 12,
+        fz: 13,
+        ps: 14,
+        other: 15
 
     }
     enum year: {
