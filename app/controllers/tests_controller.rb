@@ -34,16 +34,15 @@ class TestsController < ApplicationController
 
     def update
       @test = Test.find(params[:id])
-    
+
       # 画像のパラメータが空かどうかをチェックし、空であればそのパラメータを除外
       update_params = test_params
       [:ja_images, :ma_images, :ss_images, :sc_images, :en_images].each do |image_field|
         if params[:test][image_field].reject(&:blank?).empty?
           update_params = update_params.except(image_field)
-          Rails.logger.info "#{image_field.to_s.capitalize}のパラメータは空です。この画像を更新せずにその他のパラメータを更新します。"
         end
       end
-    
+
       if @test.update(update_params)
         redirect_to @test, notice: '編集が完了しました。'
       else
