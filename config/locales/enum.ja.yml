@@ -54,7 +54,7 @@ ja:
       print:
         subject:
           ja: '国語'
-          ma: '数学'
+          ma: '数学(算数)'
           hi: '歴史'
           ge: '地理'
           ci: '公民or社会'
@@ -74,7 +74,7 @@ ja:
       textbook:
         subject:
           ja: '国語'
-          ma: '数学'
+          ma: '数学(算数)'
           hi: '歴史'
           ge: '地理'
           ci: '公民or社会'
