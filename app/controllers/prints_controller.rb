@@ -24,19 +24,14 @@ class PrintsController < ApplicationController
       @print = Print.find(params[:id])
     end
 
-
-
     def update
       @print = Print.find(params[:id])
 
       if params[:print][:print_images].reject(&:blank?).blank?
         update_params = print_params.except(:print_images)
-        Rails.logger.info "空の画像パラメータが検出されました。画像を更新せずにその他のパラメータを更新します。"
       else
         update_params = print_params
       end
-
-      
 
       if @print.update(update_params)
         redirect_to @print, notice: '更新されました'
@@ -45,10 +40,6 @@ class PrintsController < ApplicationController
       end
 
     end
-
-
-
-
 
 #    def update
 #      @print = Print.find(params[:id])

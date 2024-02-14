@@ -54,8 +54,8 @@ gem 'popper_js'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[ mri windows ]
-  gem 'rubocop-rails'
   gem 'dotenv-rails'
+  gem 'rubocop-rails'
 end
 
 group :development do
