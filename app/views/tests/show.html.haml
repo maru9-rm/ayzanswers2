@@ -41,9 +41,7 @@
   %hr
   - @test.ja_images.each do |image|
     = cl_image_tag(image.blob.key, class: 'max-width')
-
-
-
+    
 
 - if @test.ma_images.attached?
   %hr

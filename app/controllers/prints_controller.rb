@@ -24,22 +24,48 @@ class PrintsController < ApplicationController
       @print = Print.find(params[:id])
     end
 
+
+
     def update
       @print = Print.find(params[:id])
 
-      # 画像ファイルがアップロードされた場合のみ画像を更新
-      if print_params[print_images: []].present?
-        @print.image.attach(print_params[print_images: []])
+      if params[:print][:print_images].reject(&:blank?).blank?
+        update_params = print_params.except(:print_images)
+        Rails.logger.info "空の画像パラメータが検出されました。画像を更新せずにその他のパラメータを更新します。"
+      else
+        update_params = print_params
       end
 
-      # その他の属性を更新
-      if @print.update(print_params.except(print_images: []))
-        redirect_to @print, notice: 'テキストが更新されました。'
+      
+
+      if @print.update(update_params)
+        redirect_to @print, notice: '更新されました'
       else
         render :edit
       end
 
     end
+
+
+
+
+
+#    def update
+#      @print = Print.find(params[:id])
+#
+#      # 画像ファイルがアップロードされた場合のみ画像を更新
+#      if print_params[print_images: []].present?
+#        @print.image.attach(print_params[print_images: []])
+#      end
+#
+#      # その他の属性を更新
+#      if @print.update(print_params.except(print_images: []))
+#        redirect_to @print, notice: 'テキストが更新されました。'
+#      else
+#        render :edit
+#      end
+#
+#    end
 
     def show
         @print = Print.find(params[:id])
