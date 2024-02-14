@@ -1,7 +1,7 @@
 class TextbooksController < ApplicationController
 
     def index
-      @textbooks = Textbook.all.order(:grade, :subject, :texttitle)
+      @textbooks = Textbook.all.order(:grade, :subject, :texttitle, :notes)
       @textbooks = @textbooks.where(grade: params[:grade]) if params[:grade].present?
       @textbooks = @textbooks.where(subject: params[:subject]) if params[:subject].present?
       @textbooks = @textbooks.where(texttitle: params[:texttitle]) if params[:texttitle].present?
