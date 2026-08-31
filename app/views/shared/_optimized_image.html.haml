@@ -1,8 +1,15 @@
-- display_url = cl_image_path(attachment.blob.key, width: 1800, crop: :limit, quality: :auto, fetch_format: :auto)
-- original_url = cl_image_path(attachment.blob.key)
+- cloudinary_configured = Rails.application.credentials.dig(:cloudinary, :cloud_name).present?
+- if cloudinary_configured
+  - thumbnail_url = cl_image_path(attachment.blob.key, width: 480, crop: :limit, quality: :auto, fetch_format: :auto)
+  - display_url = cl_image_path(attachment.blob.key, width: 1800, crop: :limit, quality: :auto, fetch_format: :auto)
+  - original_url = cl_image_path(attachment.blob.key)
+- else
+  - thumbnail_url = url_for(attachment)
+  - display_url = thumbnail_url
+  - original_url = thumbnail_url
 
 .answer-image-card
   %button.answer-image-button{ type: "button", data: { action: "image-viewer#open", image_url: display_url, original_url: original_url, image_alt: title } }
-    = cl_image_tag attachment.blob.key, width: 480, crop: :limit, quality: :auto, fetch_format: :auto, loading: "lazy", decoding: "async", alt: title, class: "answer-image-thumbnail"
+    = image_tag thumbnail_url, loading: "lazy", decoding: "async", alt: title, class: "answer-image-thumbnail"
   - if local_assigns[:caption].present?
     .answer-image-caption= caption
