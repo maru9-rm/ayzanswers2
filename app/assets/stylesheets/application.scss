@@ -148,17 +148,20 @@ a:hover {
   }
 
   .image-viewer-content {
-    display: flex;
-    flex-direction: column;
     height: 100%;
+    overflow-y: auto;
   }
 
   .image-viewer-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
     padding: .75rem 1rem;
+    background: #161616;
   }
 
   .image-viewer-actions {
@@ -168,10 +171,9 @@ a:hover {
   }
 
   .image-viewer-image {
+    display: block;
     width: 100%;
-    min-height: 0;
-    flex: 1;
-    object-fit: contain;
+    height: auto;
   }
 
   @media (max-width: 575.98px) {
