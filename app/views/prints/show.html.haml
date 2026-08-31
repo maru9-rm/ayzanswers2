@@ -16,9 +16,9 @@
   %hr
   %p.text-center.fw-bold 答案画像
   %hr
-  - @print.print_images.each do |image|
-    = cl_image_tag(image.blob.key, class: 'max-width')
-    -#= image_tag image, class: 'max-width'
+  .answer-image-grid
+    - @print.print_images.each_with_index do |image, index|
+      = render "shared/optimized_image", attachment: image, title: "#{@print.title} #{index + 1}枚目"
 
 
 

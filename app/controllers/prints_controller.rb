@@ -59,7 +59,7 @@ class PrintsController < ApplicationController
 #    end
 
     def show
-        @print = Print.find(params[:id])
+        @print = Print.with_attached_print_images.find(params[:id])
     end
 
     def destroy

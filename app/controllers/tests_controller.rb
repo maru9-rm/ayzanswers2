@@ -25,7 +25,12 @@ class TestsController < ApplicationController
     end
 
     def show
-        @test = Test.find(params[:id])
+        @test = Test.with_attached_ja_images
+                    .with_attached_ma_images
+                    .with_attached_ss_images
+                    .with_attached_sc_images
+                    .with_attached_en_images
+                    .find(params[:id])
     end
 
     def edit

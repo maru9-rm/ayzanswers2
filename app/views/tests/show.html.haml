@@ -39,38 +39,42 @@
   %hr
   %p.text-center.fw-bold#pageimage_ja 国語
   %hr
-  - @test.ja_images.each do |image|
-    = cl_image_tag(image.blob.key, class: 'max-width')
+  .answer-image-grid
+    - @test.ja_images.each_with_index do |image, index|
+      = render "shared/optimized_image", attachment: image, title: "国語 #{index + 1}枚目"
     
 
 - if @test.ma_images.attached?
   %hr
   %p.text-center.fw-bold#pageimage_ma 数学
   %hr
-  - @test.ma_images.each do |image|
-    = cl_image_tag(image.blob.key, class: 'max-width')
+  .answer-image-grid
+    - @test.ma_images.each_with_index do |image, index|
+      = render "shared/optimized_image", attachment: image, title: "数学 #{index + 1}枚目"
 
 - if @test.ss_images.attached?
   %hr
   %p.text-center.fw-bold#pageimage_ss 社会
   %hr
-  - @test.ss_images.each do |image|
-    = cl_image_tag(image.blob.key, class: 'max-width')
+  .answer-image-grid
+    - @test.ss_images.each_with_index do |image, index|
+      = render "shared/optimized_image", attachment: image, title: "社会 #{index + 1}枚目"
 
 - if @test.sc_images.attached?
   %hr
   %p.text-center.fw-bold#pageimage_sc 理科
   %hr
-  - @test.sc_images.each do |image|
-    .col-md-4
-    = cl_image_tag(image.blob.key, class: 'max-width')
+  .answer-image-grid
+    - @test.sc_images.each_with_index do |image, index|
+      = render "shared/optimized_image", attachment: image, title: "理科 #{index + 1}枚目"
 
 - if @test.en_images.attached?
   %hr
   %p.text-center.fw-bold#pageimage_en 英語
   %hr
-  - @test.en_images.each do |image|
-    = cl_image_tag(image.blob.key, class: 'max-width')
+  .answer-image-grid
+    - @test.en_images.each_with_index do |image, index|
+      = render "shared/optimized_image", attachment: image, title: "英語 #{index + 1}枚目"
   
 
 .container.my-5
