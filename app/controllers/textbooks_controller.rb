@@ -10,7 +10,7 @@ class TextbooksController < ApplicationController
 
     def show
         @textbook = Textbook.find(params[:id])
-        @pageimages = @textbook.pageimages.order(:title)
+        @pageimages = @textbook.pageimages.with_attached_image.order(:title)
     end
 
     def new

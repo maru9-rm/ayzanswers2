@@ -13,7 +13,7 @@
       %p.lead.fw-bold 目次
       %hr
         .row.row-cols-auto
-          - @textbook.pageimages.order(:title).each_with_index do |pageimage, index|
+          - @pageimages.each_with_index do |pageimage, index|
             .btn.btn-light.m-2
               %a(href="#pageimage_#{index + 1}")
                 =pageimage.title
@@ -25,18 +25,15 @@
   %hr
 
 
-- @pageimages.each_with_index do |pageimage, index|
-  .d-flex.justify-content-between.container
-    %h3.ms-3= pageimage.title
-    
-    = form_with(model: [@textbook, pageimage], method: :delete, local: false, data: { turbo_confirm: "本当に削除しますか？" }) do |form|
-      = form.submit "削除", class: "btn btn-danger" 
-    
-
-  - if pageimage.image.attached?
-    = cl_image_tag(pageimage.image.key, id: "pageimage_#{index + 1}", class: 'mb-3 w-100')
-
-    -#= image_tag pageimage.image, id: "pageimage_#{index + 1}", class: 'mb-3 w-100'
+.answer-image-grid
+  - @pageimages.each_with_index do |pageimage, index|
+    .answer-image-entry{ id: "pageimage_#{index + 1}" }
+      .d-flex.justify-content-between.align-items-center.mb-2
+        %h3.mb-0= pageimage.title
+        = form_with(model: [@textbook, pageimage], method: :delete, local: false, data: { turbo_confirm: "本当に削除しますか？" }) do |form|
+          = form.submit "削除", class: "btn btn-danger btn-sm"
+      - if pageimage.image.attached?
+        = render "shared/optimized_image", attachment: pageimage.image, title: pageimage.title
 
 .container.px-4
   .row.justify-content-center.mt-5

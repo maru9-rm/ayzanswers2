@@ -65,6 +65,98 @@ a:hover {
     height:auto;
   }
 
+  .answer-image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .answer-image-entry,
+  .answer-image-card {
+    min-width: 0;
+  }
+
+  .answer-image-button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: .5rem;
+    background: #f8f9fa;
+    cursor: zoom-in;
+  }
+
+  .answer-image-button:focus-visible {
+    outline: 3px solid #0d6efd;
+    outline-offset: 2px;
+  }
+
+  .answer-image-thumbnail {
+    display: block;
+    width: 100%;
+    height: 320px;
+    object-fit: contain;
+  }
+
+  .answer-image-caption {
+    margin-top: .5rem;
+    text-align: center;
+  }
+
+  .image-viewer-dialog {
+    width: min(96vw, 1900px);
+    max-width: none;
+    height: 96vh;
+    padding: 0;
+    border: 0;
+    border-radius: .5rem;
+    background: #161616;
+    color: white;
+  }
+
+  .image-viewer-dialog::backdrop {
+    background: rgba(0, 0, 0, .82);
+  }
+
+  .image-viewer-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .image-viewer-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .75rem 1rem;
+  }
+
+  .image-viewer-actions {
+    display: flex;
+    flex-shrink: 0;
+    gap: .5rem;
+  }
+
+  .image-viewer-image {
+    width: 100%;
+    min-height: 0;
+    flex: 1;
+    object-fit: contain;
+  }
+
+  @media (max-width: 575.98px) {
+    .answer-image-thumbnail {
+      height: 240px;
+    }
+
+    .image-viewer-caption {
+      display: none;
+    }
+  }
+
   .button-class {
     width: 100%;
   }
@@ -140,4 +232,3 @@ a:hover {
  *= require_tree .
  *= require_self
  */
-

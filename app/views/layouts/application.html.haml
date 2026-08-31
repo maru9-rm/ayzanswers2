@@ -11,7 +11,7 @@
     %link{href: "#{image_path('favicon.ico')}", rel: "shortcut icon", type: "image/x-icon"}
     %link{ rel: "apple-touch-icon", sizes: "180x180", href: "#{image_path('apple-touch-icon.png')}" }
 
-  %body
+  %body{ data: { controller: "image-viewer" } }
     - if flash[:success].present?
       .alert.alert-success
         = flash[:success]
@@ -35,5 +35,14 @@
 
       
     = yield
+
+    %dialog.image-viewer-dialog{ data: { image_viewer_target: "dialog", action: "click->image-viewer#closeOnBackdrop keydown->image-viewer#closeOnEscape" } }
+      .image-viewer-content
+        .image-viewer-toolbar
+          %span.image-viewer-caption{ data: { image_viewer_target: "caption" } }
+          .image-viewer-actions
+            %a.btn.btn-sm.btn-outline-light{ target: "_blank", rel: "noopener", data: { image_viewer_target: "originalLink" } } 原寸表示
+            %button.btn.btn-sm.btn-light{ type: "button", data: { action: "image-viewer#close" } } 閉じる
+        %img.image-viewer-image{ alt: "", data: { image_viewer_target: "image" } }
 
     
