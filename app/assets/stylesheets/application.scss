@@ -67,25 +67,36 @@ a:hover {
 
   .answer-image-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
     padding: 1rem;
   }
 
   .answer-image-entry,
   .answer-image-card {
     min-width: 0;
+    height: 100%;
   }
 
   .answer-image-button {
-    display: block;
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    height: 100%;
     padding: 0;
     overflow: hidden;
-    border: 1px solid #ddd;
-    border-radius: .5rem;
-    background: #f8f9fa;
+    border: 1px solid #d6dce2;
+    border-radius: .75rem;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
     cursor: zoom-in;
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+
+  .answer-image-button:hover {
+    transform: translateY(-3px);
+    border-color: #0d6efd;
+    box-shadow: 0 8px 20px rgba(13, 110, 253, .18);
   }
 
   .answer-image-button:focus-visible {
@@ -96,13 +107,29 @@ a:hover {
   .answer-image-thumbnail {
     display: block;
     width: 100%;
-    height: 320px;
+    height: 260px;
     object-fit: contain;
+    background: #f2f4f6;
   }
 
-  .answer-image-caption {
-    margin-top: .5rem;
-    text-align: center;
+  .answer-image-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    width: 100%;
+    min-height: 52px;
+    padding: .75rem 1rem;
+    color: #212529;
+    font-weight: 700;
+    text-align: left;
+  }
+
+  .answer-image-zoom {
+    flex-shrink: 0;
+    color: #0d6efd;
+    font-size: .8rem;
+    font-weight: 400;
   }
 
   .image-viewer-dialog {
@@ -153,7 +180,7 @@ a:hover {
     }
 
     .answer-image-thumbnail {
-      height: 240px;
+      height: 220px;
     }
 
     .image-viewer-caption {

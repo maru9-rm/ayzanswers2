@@ -9,7 +9,8 @@
   - original_url = thumbnail_url
 
 .answer-image-card
-  %button.answer-image-button{ type: "button", data: { action: "image-viewer#open", image_url: display_url, original_url: original_url, image_alt: title } }
+  %button.answer-image-button{ type: "button", aria: { label: "#{title}を拡大表示" }, data: { action: "image-viewer#open", image_url: display_url, original_url: original_url, image_alt: title } }
     = image_tag thumbnail_url, loading: "lazy", decoding: "async", alt: title, class: "answer-image-thumbnail"
-  - if local_assigns[:caption].present?
-    .answer-image-caption= caption
+    .answer-image-label
+      %span= title
+      %span.answer-image-zoom 拡大する
