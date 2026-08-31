@@ -67,7 +67,7 @@ a:hover {
 
   .answer-image-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1rem;
     padding: 1rem;
   }
@@ -106,8 +106,8 @@ a:hover {
   }
 
   .image-viewer-dialog {
-    width: min(96vw, 1900px);
-    max-width: none;
+    width: 96vw;
+    max-width: 1900px;
     height: 96vh;
     padding: 0;
     border: 0;
@@ -148,6 +148,10 @@ a:hover {
   }
 
   @media (max-width: 575.98px) {
+    .answer-image-grid {
+      grid-template-columns: 1fr;
+    }
+
     .answer-image-thumbnail {
       height: 240px;
     }
