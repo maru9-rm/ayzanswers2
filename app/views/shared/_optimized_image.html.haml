@@ -1,4 +1,4 @@
-- cloudinary_configured = Rails.application.credentials.dig(:cloudinary, :cloud_name).present?
+- cloudinary_configured = Cloudinary.config.cloud_name.present?
 - if cloudinary_configured
   - thumbnail_url = cl_image_path(attachment.blob.key, width: 480, crop: :limit, quality: :auto, fetch_format: :auto)
   - display_url = cl_image_path(attachment.blob.key, width: 1800, crop: :limit, quality: :auto, fetch_format: :auto)
